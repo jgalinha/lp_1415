@@ -28,8 +28,22 @@ def factorial_cauda(n):
             return fact(i-1, (acc * i))
     return fact()
 
+lista =['a', 'b', 'c']
+it = iter(lista)
+print it
+x1 = it.next()
+print x1
+x2 = it.next()
+print x2
+
+lista = ['a', 'b', 'c', 'd', 'e']
+it = iter(lista)
+x = it.next()
+while it:
+    print x
+    x = it.next()
+
 print factorial_cauda(5)
 print factorial(5)
-
 l2 = frec([], 'Bu ', 2)
 print l2
