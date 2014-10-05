@@ -39,11 +39,26 @@ print x2
 lista = ['a', 'b', 'c', 'd', 'e']
 it = iter(lista)
 x = it.next()
-while it:
-    print x
-    x = it.next()
+#while it:
+#    print x
+#    x = it.next()
 
 print factorial_cauda(5)
 print factorial(5)
 l2 = frec([], 'Bu ', 2)
 print l2
+
+lista_linhas = ['           uma', '   duas', '         tres']
+
+#expressão de geração -- devolve iterador
+it = (linha.strip() for linha in lista_linhas)
+print it.next() + it.next() + it.next()
+
+total_letras = sum(len(linha.strip()) for linha in lista_linhas)
+print " total de letras {0}".format(total_letras)
+
+#compreensãp de lista -- devolve uma lista
+lista = [linha.strip()
+         for linha in lista_linhas
+         if len(linha) > 7]
+print lista
