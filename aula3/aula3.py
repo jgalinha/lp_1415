@@ -44,8 +44,29 @@ def media(notasCurso):
 
     return '{:.2f}'.format(reduce(f0, map(f2, notasCurso)) / reduce(f0, map(f1, notasCurso)))
 
+print(u"Média : " + media(notas))
 
-print(media(notas))
+def media_alvo(notas, alvo, i=9.5):
+    f0 = lambda x: notas[x][0] * notas[x][1] if notas[x][1] > 9.5 else notas[x][0] * i
+    f1 = lambda x, y: x + y
+    media_test = reduce(f1, map(f0, notas)) / reduce(f1, map(lambda x: notas[x][0], notas))
+    if(media_test > alvo and media_test < (alvo + 0.5)):
+        if media_test > 20:
+            print 'Esquece lá isso!'
+        else:
+            print 'Necessita de uma média de {:.2f} nas restantes disciplinas para alcançar a média alvo de {:.2f}'.format(media_test, alvo)
+        pass
+    else:
+        i += 0.1
+        media_alvo(notas, alvo, i)
+
+lista_medias = [12, 13, 14, 15, 16]
+it_lista = iter(lista_medias)
+
+media_alvo(notas, it_lista.next())
+
+
+
 
 '''
 lista = [1,2,3,4,5,4,4,2,3,5,2,6]
