@@ -36,11 +36,16 @@ notas = {'P1': [6.0, 18.0],
          'DI': [2.0, 0.0],
          'Estagio': [15.0, 0.0]}
 
-f0 = lambda x, y: x + y
-f1 = lambda x: notas[x][0] if notas[x][1] > 0 else 0
-f2 = lambda x: notas[x][0] * notas[x][1]
 
-print '{:.2f}'.format(reduce(f0, map(f2, notas)) / reduce(f0, map(f1, notas)))
+def media(notasCurso):
+    f0 = lambda x, y: x + y
+    f1 = lambda x: notasCurso[x][0] if notasCurso[x][1] > 0 else 0
+    f2 = lambda x: notasCurso[x][0] * notasCurso[x][1]
+
+    return '{:.2f}'.format(reduce(f0, map(f2, notasCurso)) / reduce(f0, map(f1, notasCurso)))
+
+
+print(media(notas))
 
 '''
 lista = [1,2,3,4,5,4,4,2,3,5,2,6]
