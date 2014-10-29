@@ -3,12 +3,74 @@
 # data: 05 de outubro de 2014
 #
 
+
+notas = {'P1': [6.0, 18.0],
+         'SD': [6.0, 18.0],
+         'AM': [6.0, 0.0],
+         'FA': [6.0, 13.0],
+         'AL': [6.0, 11.0],
+         'P2': [7.0, 17.0],
+         'MA': [7.0, 18.0],
+         'MD': [6.0, 18.0],
+         'PE': [6.0, 13.0],
+         'ATT': [4.0, 18.0],
+         'FSI': [6.0, 0.0],
+         'MC': [6.0, 0.0],
+         'RC1': [6.0, 18.0],
+         'LP': [6.0, 0.0],
+         'SO': [6.0, 0.0],
+         'BD1': [6.0, 0.0],
+         'Eng. Soft.': [6.0, 0.0],
+         'EDA': [6.0, 0.0],
+         'RC2': [6.0, 0.0],
+         'IPC': [6.0, 0.0],
+         'BD2': [7.0, 0.0],
+         'HA': [6.0, 0.0],
+         'SRC': [7.0, 0.0],
+         'Empreendedorismo': [3.0, 18.0],
+         'DGC': [3.0, 0.0],
+         'PDE': [2.0, 0.0],
+         'Portfolio': [2.0, 0.0],
+         'PCR': [7.0, 0.0],
+         'AS': [6.0, 18.0],
+         'DI': [2.0, 0.0],
+         'Estagio': [15.0, 0.0]}
+
+f0 = lambda x, y: x + y
+f1 = lambda x: notas[x][0] if notas[x][1] > 0 else 0
+f2 = lambda x: notas[x][0] * notas[x][1]
+
+print '{:.2f}'.format(reduce(f0, map(f2, notas)) / reduce(f0, map(f1, notas)))
+
+'''
+lista = [1,2,3,4,5,4,4,2,3,5,2,6]
+
+conj1 = set(lista)
+conj2 = set([1,4,5,8])
+conj3 = conj1.intersection(conj2)
+
+lista1 = [x for x in conj1]
+
+d = {}
+
+d['a'] = 'x'
+d['e'] = 'y'
+d['i'] = 'z'
+d['o'] = 't'
+d['u'] = 'w'
+
+frase = 'Cronus castrou o seu pai Urano'
+
+f = lambda x: d[x] if x in d else x
+
+frase3 = reduce(lambda x, y: x + y, map(f, frase))
+
+
+
 def frec(l1, x, n):
-    '''
     :param frec: devolve uma lista com n elementos x
     :param x: o elemento a repetir
     :param n: numero de repetições
-    '''
     if not n:
         return l1
     else:
@@ -62,3 +124,4 @@ lista = [linha.strip()
          for linha in lista_linhas
          if len(linha) > 7]
 print lista
+'''
