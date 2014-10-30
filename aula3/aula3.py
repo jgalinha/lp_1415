@@ -4,37 +4,13 @@
 #
 
 
-notas = {'P1': [6.0, 18.0],
-         'SD': [6.0, 18.0],
-         'AM': [6.0, 0.0],
-         'FA': [6.0, 13.0],
-         'AL': [6.0, 11.0],
-         'P2': [7.0, 17.0],
-         'MA': [7.0, 18.0],
-         'MD': [6.0, 18.0],
-         'PE': [6.0, 13.0],
-         'ATT': [4.0, 18.0],
-         'FSI': [6.0, 0.0],
-         'MC': [6.0, 0.0],
-         'RC1': [6.0, 18.0],
-         'LP': [6.0, 0.0],
-         'SO': [6.0, 0.0],
-         'BD1': [6.0, 0.0],
-         'Eng. Soft.': [6.0, 0.0],
-         'EDA': [6.0, 0.0],
-         'RC2': [6.0, 0.0],
-         'IPC': [6.0, 0.0],
-         'BD2': [7.0, 0.0],
-         'HA': [6.0, 0.0],
-         'SRC': [7.0, 0.0],
-         'Empreendedorismo': [3.0, 18.0],
-         'DGC': [3.0, 0.0],
-         'PDE': [2.0, 0.0],
-         'Portfolio': [2.0, 0.0],
-         'PCR': [7.0, 0.0],
-         'AS': [6.0, 18.0],
-         'DI': [2.0, 0.0],
-         'Estagio': [15.0, 0.0]}
+notas = {'P1': (6.0, 18.0), 'SD': (6.0, 18.0), 'AM': (6.0, 0.0), 'FA': (6.0, 13.0), 'AL': (6.0, 11.0),
+         'P2': (7.0, 17.0), 'MA': (7.0, 18.0), 'MD': (6.0, 18.0), 'PE': (6.0, 13.0), 'ATT': (4.0, 18.0),
+         'FSI': (6.0, 0.0), 'MC': (6.0, 0.0), 'RC1': (6.0, 18.0), 'LP': (6.0, 0.0), 'SO': (6.0, 0.0),
+         'BD1': (6.0, 0.0), 'Eng. Soft.': (6.0, 0.0), 'EDA': (6.0, 0.0), 'RC2': (6.0, 0.0), 'IPC': (6.0, 0.0),
+         'BD2': (7.0, 0.0), 'HA': (6.0, 0.0), 'SRC': (7.0, 0.0), 'Empreendedorismo': (3.0, 18.0), 'DGC': (3.0, 0.0),
+         'PDE': (2.0, 0.0), 'Portfolio': (2.0, 0.0), 'PCR': (7.0, 0.0), 'AS': (6.0, 18.0), 'DI': (2.0, 0.0),
+         'Estagio': (15.0, 0.0)}
 
 
 def media(notasCurso):
@@ -44,29 +20,39 @@ def media(notasCurso):
 
     return '{:.2f}'.format(reduce(f0, map(f2, notasCurso)) / reduce(f0, map(f1, notasCurso)))
 
+
 print(u"Média : " + media(notas))
+
 
 def media_alvo(notas, alvo, i=9.5):
     f0 = lambda x: notas[x][0] * notas[x][1] if notas[x][1] > 9.5 else notas[x][0] * i
     f1 = lambda x, y: x + y
     media_test = reduce(f1, map(f0, notas)) / reduce(f1, map(lambda x: notas[x][0], notas))
-    if(media_test > alvo and media_test < (alvo + 0.5)):
+    if (media_test > alvo and media_test < (alvo + 0.5)):
         if media_test > 20:
-            print 'Esquece lá isso!'
+            print '%2.0f? Esquece lá isso!' % alvo
         else:
-            print 'Necessita de uma média de {:.2f} nas restantes disciplinas para alcançar a média alvo de {:.2f}'.format(media_test, alvo)
-        pass
+            print 'Necessita de uma média de {:.2f} nas restantes disciplinas para alcançar a média alvo de {:.2f}'.format(
+                media_test, alvo)
     else:
         i += 0.1
         media_alvo(notas, alvo, i)
 
-lista_medias = [12, 13, 14, 15, 16]
+
+def gen(x):
+    for i in x:
+        yield i
+
+
+lista_medias = [12, 13, 14, 15, 16, 20]
 it_lista = iter(lista_medias)
 
 media_alvo(notas, it_lista.next())
-
-
-
+media_alvo(notas, it_lista.next())
+media_alvo(notas, it_lista.next())
+media_alvo(notas, it_lista.next())
+media_alvo(notas, it_lista.next())
+media_alvo(notas, it_lista.next())
 
 '''
 lista = [1,2,3,4,5,4,4,2,3,5,2,6]
